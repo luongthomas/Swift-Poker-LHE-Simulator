@@ -16,12 +16,14 @@ class Player {
     var card1: Card?
     var card2: Card?
     var action: Action?
+    var position: PositionType?
     
-    init(chips: Double, name: String, card1: Card? = nil, card2: Card? = nil, action: Action? = nil) {
+    init(chips: Double, name: String, card1: Card? = nil, card2: Card? = nil, action: Action? = nil, position: PositionType? = nil) {
         self.chips = chips
         self.name = name
         self.card1 = card1
         self.card2 = card2
         self.action = action
+        self.position = position
     }
 }

@@ -13,11 +13,15 @@ enum PositionType {
 }
 
 struct Position {
-    var player: Player?
+    var player: Player? {
+        didSet {
+            self.player?.position = self.position
+        }
+    }
     var position: PositionType
     
     init(player: Player? = nil, position: PositionType) {
-        self.player = player
+//        self.player = player
         self.position = position
     }
 }
