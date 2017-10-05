@@ -1,5 +1,5 @@
 //
-//  Rank.swift
+//  Suit.swift
 //  poker
 //
 //  Created by Puroof on 10/3/17.
@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+enum Suit {
+    case spade, club, heart, diamond, none
+}

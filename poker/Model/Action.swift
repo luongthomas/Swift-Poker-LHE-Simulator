@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+enum Action {
+    case check, raise, bet, fold, waiting, sittingOut
+}

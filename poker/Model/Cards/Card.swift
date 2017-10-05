@@ -1,5 +1,5 @@
 //
-//  Deck.swift
+//  Card.swift
 //  poker
 //
 //  Created by Puroof on 10/3/17.
@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+
+struct Card {
+    let suit: Suit
+    let rank: Rank
+}

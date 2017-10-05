@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+enum PositionType {
+    case smallBlind, bigBlind, utg, utg1, utg2, mp1, mp2, cutoff, button
+}
+
+struct Position {
+    var player: Player?
+    var position: PositionType
+    
+    init(player: Player? = nil, position: PositionType) {
+        self.player = player
+        self.position = position
+    }
+}

@@ -1,5 +1,5 @@
 //
-//  Card.swift
+//  Rank.swift
 //  poker
 //
 //  Created by Puroof on 10/3/17.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+
+enum Rank {
+    case ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, none
+}
