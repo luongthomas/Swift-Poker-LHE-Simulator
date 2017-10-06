@@ -14,21 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let game = Game()
         
         
-        let deck = Deck()
-        for card in deck.cards {
-            print(card.suit, card.rank)
-        }
-        
-
-        let board = Board()
-        board.drawFlopCards(deck: deck)
-        
-        print("Number of cards left in the deck: \(deck.cards.count)")
-
-        let table = Table()
-        let game = Game(table: table, board: board)
         
         
         let player1 = Player(chips: 100, name: "John Doe", card1: nil, card2: nil, action: nil, position: nil)
@@ -63,8 +51,8 @@ class ViewController: UIViewController {
         
         
         for (i, seat) in game.table.seats.enumerated() {
-            if let currentSeat = seat as? Seat {
-                print("Name of Person \(i + 1): \(currentSeat.player!.name)")
+            if let currentSeat = seat as? Seat{
+                print("Name of Person \(i + 1): \(String(describing: currentSeat.player!.name))")
             }
             
         }
@@ -80,17 +68,17 @@ class ViewController: UIViewController {
         
         
         for seat in game.table.seats {
-            let drawnCard = deck.drawCard()
+            let drawnCard = game.deck.drawCard()
             seat.player!.card1 = drawnCard
         }
         
         for seat in game.table.seats {
-            let drawnCard = deck.drawCard()
+            let drawnCard = game.deck.drawCard()
             seat.player!.card2 = drawnCard
         }
         
         for seat in game.table.seats {
-            print("Player name: \(seat.player!.name!), \(seat.player!.position), \(seat.player!.card1?.suit) \(seat.player!.card1?.rank), \(seat.player!.card2?.suit) \(seat.player!.card2?.rank)")
+            print("Player name: \(seat.player!.name!), \(String(describing: seat.player!.position!)), \(String(describing: seat.player!.card1?.suit)) \(String(describing: seat.player!.card1?.rank)), \(String(describing: seat.player!.card2?.suit)) \(String(describing: seat.player!.card2?.rank))")
         }
         
         
@@ -98,17 +86,17 @@ class ViewController: UIViewController {
             print("Board card (\(i)): \(element.suit) \(element.rank)")
         }
         
-        board.drawTurnCard(deck: deck)
-        board.drawRiverCard(deck: deck)
+        game.startTurn()
+        game.startRiver()
         
-        print("Number of cards left in the deck: \(deck.cards.count)")
+        print("Number of cards left in the deck: \(game.deck.cards.count)")
         
         
         
         game.rotateGamePositions()
         
         for seat in game.table.seats {
-            print("Player name: \(seat.player!.name!), \(seat.player!.position), \(seat.player!.card1?.suit) \(seat.player!.card1?.rank), \(seat.player!.card2?.suit) \(seat.player!.card2?.rank)")
+            print("Player name: \(seat.player!.name!), \(String(describing: seat.player!.position!)), \(String(describing: seat.player!.card1?.suit)) \(String(describing: seat.player!.card1?.rank)), \(String(describing: seat.player!.card2?.suit)) \(String(describing: seat.player!.card2?.rank))")
         }
     }
 

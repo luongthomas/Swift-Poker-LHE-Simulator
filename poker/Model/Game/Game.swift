@@ -13,6 +13,7 @@ class Game {
     
     var table: Table
     var board: Board
+    var deck: Deck
     
     var positions = [Position]()
     
@@ -26,9 +27,10 @@ class Game {
     var cutoff = Position(position: .cutoff)
     var button = Position(position: .button)
     
-    init(table: Table, board: Board) {
-        self.table = table
-        self.board = board
+    init() {
+        self.table = Table()
+        self.board = Board()
+        self.deck = Deck()
         positions.append(contentsOf: [smallBlind, bigBlind, utg, utg1, utg2, mp1, mp2, cutoff, button])
         
     }
@@ -37,7 +39,7 @@ class Game {
     func rotateGamePositions() {
         let firstSeat = self.table.seats.first?.player?.position
         let lastSeatIndex = self.table.seats.endIndex - 1
-        var lastSeat = self.table.seats[lastSeatIndex].player?.position
+        let lastSeat = self.table.seats[lastSeatIndex].player?.position
         
         for (i, seat) in self.table.seats.enumerated() {
             //print("Swap Player before \(seat.player!.name) \(seat.player!.position)")
@@ -46,7 +48,24 @@ class Game {
             }
             //print("Swap Player after \(seat.player!.name) \(seat.player!.position)")
         }
+        
+        // Replace the last seat with the first seat
+        // can't use lastSeat because it is just a local copy
         self.table.seats[lastSeatIndex].player?.position = firstSeat
         print("Rotated game positions")
     }
+    
+    func startFlop() {
+        self.board.drawFlopCards(deck: self.deck)
+    }
+    
+    func startTurn() {
+        self.board.drawTurnCard(deck: self.deck)
+    }
+    
+    func startRiver() {
+        self.board.drawRiverCard(deck: self.deck)
+    }
+    
+    
 }
