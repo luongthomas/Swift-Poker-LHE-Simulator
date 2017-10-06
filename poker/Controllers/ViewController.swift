@@ -29,9 +29,6 @@ class ViewController: UIViewController {
 
         let table = Table()
         let game = Game(table: table, board: board)
-        for (i, person) in game.players.enumerated() {
-            print("Person \(i + 1): \(person.name)")
-        }
         
         
         let player1 = Player(chips: 100, name: "John Doe", card1: nil, card2: nil, action: nil, position: nil)
@@ -45,11 +42,10 @@ class ViewController: UIViewController {
         let player9 = Player(chips: 100, name: "Jolle Doe", card1: nil, card2: nil, action: nil, position: nil)
         
         
+        var players = [Player]()
+        players.append(contentsOf: [player1, player2, player3, player4, player5, player6, player7, player8, player9])
+        
         // If I change the instance here of player1, then the game.bigBlind (assigned as player1) also changes properties
-        
-        
-        
-        
         game.smallBlind.player = player1
         game.bigBlind.player = player2
         game.utg.player = player3
@@ -59,9 +55,22 @@ class ViewController: UIViewController {
         game.mp2.player = player7
         game.cutoff.player = player8
         game.button.player = player9
+
         
-        var playerTestArray = [Player]()
-        playerTestArray.append(contentsOf: [game.smallBlind.player!, game.bigBlind.player!, game.utg.player!, game.utg1.player!, game.utg2.player!, game.mp1.player!, game.mp2.player!, game.cutoff.player!, game.button.player!])
+        for player in players {
+            game.table.playerSitDown(player: player)
+        }
+        
+        
+        for (i, seat) in game.table.seats.enumerated() {
+            if let currentSeat = seat as? Seat {
+                print("Name of Person \(i + 1): \(currentSeat.player!.name)")
+            }
+            
+        }
+        
+//        var playerTestArray = [Player]()
+//        playerTestArray.append(contentsOf: [game.smallBlind.player!, game.bigBlind.player!, game.utg.player!, game.utg1.player!, game.utg2.player!, game.mp1.player!, game.mp2.player!, game.cutoff.player!, game.button.player!])
         
 //        player1.card1 = Card(suit: Suit.diamond, rank: Rank.eight)
 //        playerTestArray[0].card1 = Card(suit: Suit.diamond, rank: Rank.nine)
@@ -70,18 +79,18 @@ class ViewController: UIViewController {
 //
         
         
-        for player in playerTestArray {
+        for seat in game.table.seats {
             let drawnCard = deck.drawCard()
-            player.card1 = drawnCard
+            seat.player!.card1 = drawnCard
         }
         
-        for player in playerTestArray {
+        for seat in game.table.seats {
             let drawnCard = deck.drawCard()
-            player.card2 = drawnCard
+            seat.player!.card2 = drawnCard
         }
         
-        for player in playerTestArray {
-            print("Player name: \(player.name), \(player.position!), \(player.card1!.suit) \(player.card1!.rank), \(player.card2!.suit) \(player.card2!.rank)")
+        for seat in game.table.seats {
+            print("Player name: \(seat.player!.name!), \(seat.player!.position), \(seat.player!.card1?.suit) \(seat.player!.card1?.rank), \(seat.player!.card2?.suit) \(seat.player!.card2?.rank)")
         }
         
         
@@ -93,6 +102,14 @@ class ViewController: UIViewController {
         board.drawRiverCard(deck: deck)
         
         print("Number of cards left in the deck: \(deck.cards.count)")
+        
+        
+        
+        game.rotateGamePositions()
+        
+        for seat in game.table.seats {
+            print("Player name: \(seat.player!.name!), \(seat.player!.position), \(seat.player!.card1?.suit) \(seat.player!.card1?.rank), \(seat.player!.card2?.suit) \(seat.player!.card2?.rank)")
+        }
     }
 
     override func didReceiveMemoryWarning() {

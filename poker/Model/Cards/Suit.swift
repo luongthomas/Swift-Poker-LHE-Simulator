@@ -10,4 +10,5 @@ import Foundation
 
 enum Suit {
     case spade, club, heart, diamond, none
+
 }

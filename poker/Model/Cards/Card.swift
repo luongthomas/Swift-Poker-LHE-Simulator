@@ -12,4 +12,16 @@ import Foundation
 struct Card {
     let suit: Suit
     let rank: Rank
+    
+    public static func ==(lhs: Card, rhs: Card) -> Bool{
+        return
+                lhs.suit == rhs.suit &&
+                lhs.rank == rhs.rank
+    }
+    
+    public static func !=(lhs: Card, rhs: Card) -> Bool{
+        return
+                lhs.suit != rhs.suit &&
+                lhs.rank != rhs.rank
+    }
 }

@@ -23,6 +23,7 @@
 		240A57181F84BD630083CBE1 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A57171F84BD630083CBE1 /* Table.swift */; };
 		240A571A1F84BE6B0083CBE1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A57191F84BE6B0083CBE1 /* Game.swift */; };
 		240A571D1F84BF650083CBE1 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A571C1F84BF650083CBE1 /* Board.swift */; };
+		240A57241F871EB50083CBE1 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A57231F871EB50083CBE1 /* Seat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		240A57171F84BD630083CBE1 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		240A57191F84BE6B0083CBE1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		240A571C1F84BF650083CBE1 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		240A57231F871EB50083CBE1 /* Seat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +132,10 @@
 		240A57211F8614480083CBE1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				240A57231F871EB50083CBE1 /* Seat.swift */,
 				240A57171F84BD630083CBE1 /* Table.swift */,
-				240A57191F84BE6B0083CBE1 /* Game.swift */,
 				240A571C1F84BF650083CBE1 /* Board.swift */,
+				240A57191F84BE6B0083CBE1 /* Game.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			files = (
 				240A570D1F84B5540083CBE1 /* Deck.swift in Sources */,
 				240A56F61F84AB340083CBE1 /* ViewController.swift in Sources */,
+				240A57241F871EB50083CBE1 /* Seat.swift in Sources */,
 				240A57061F84B41F0083CBE1 /* Card.swift in Sources */,
 				240A57161F84BBC30083CBE1 /* Action.swift in Sources */,
 				240A57091F84B4430083CBE1 /* Suit.swift in Sources */,

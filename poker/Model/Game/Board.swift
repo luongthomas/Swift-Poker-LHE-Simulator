@@ -65,7 +65,7 @@ class Board {
     
     func drawBurnCard(deck: Deck) {
         let burnCard = deck.drawCard()
-        print("Burn card: \(burnCard.suit) \(burnCard.rank)")
-//        print("Burned one card")
+//      print("Burn card: \(burnCard.suit) \(burnCard.rank)")
+//      print("Burned one card")
     }
 }
