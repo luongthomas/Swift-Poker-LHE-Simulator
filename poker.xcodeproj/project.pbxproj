@@ -76,10 +76,10 @@
 		240A56F21F84AB340083CBE1 /* poker */ = {
 			isa = PBXGroup;
 			children = (
+				240A57221F86145E0083CBE1 /* Controllers */,
 				240A570E1F84B56B0083CBE1 /* Utils */,
 				240A57071F84B4290083CBE1 /* Model */,
 				240A56F31F84AB340083CBE1 /* AppDelegate.swift */,
-				240A56F51F84AB340083CBE1 /* ViewController.swift */,
 				240A56F71F84AB340083CBE1 /* Main.storyboard */,
 				240A56FA1F84AB340083CBE1 /* Assets.xcassets */,
 				240A56FC1F84AB340083CBE1 /* LaunchScreen.storyboard */,
@@ -91,13 +91,9 @@
 		240A57071F84B4290083CBE1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				240A57211F8614480083CBE1 /* Game */,
+				240A57201F8614390083CBE1 /* Player */,
 				240A571B1F84BEB00083CBE1 /* Cards */,
-				240A57111F84BB330083CBE1 /* Player.swift */,
-				240A57131F84BB840083CBE1 /* Position.swift */,
-				240A57151F84BBC30083CBE1 /* Action.swift */,
-				240A57171F84BD630083CBE1 /* Table.swift */,
-				240A57191F84BE6B0083CBE1 /* Game.swift */,
-				240A571C1F84BF650083CBE1 /* Board.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +115,34 @@
 				240A570C1F84B5540083CBE1 /* Deck.swift */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		240A57201F8614390083CBE1 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				240A57151F84BBC30083CBE1 /* Action.swift */,
+				240A57111F84BB330083CBE1 /* Player.swift */,
+				240A57131F84BB840083CBE1 /* Position.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		240A57211F8614480083CBE1 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				240A57171F84BD630083CBE1 /* Table.swift */,
+				240A57191F84BE6B0083CBE1 /* Game.swift */,
+				240A571C1F84BF650083CBE1 /* Board.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		240A57221F86145E0083CBE1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				240A56F51F84AB340083CBE1 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

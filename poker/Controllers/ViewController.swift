@@ -15,22 +15,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
         let deck = Deck()
         for card in deck.cards {
             print(card.suit, card.rank)
         }
         
-//        var drawnCard = deck.drawCard()
-//        print("Drawn card: \(drawnCard.suit) \(drawnCard.rank)")
-//
+
         let board = Board()
         board.drawFlopCards(deck: deck)
-        
         
         print("Number of cards left in the deck: \(deck.cards.count)")
 
         let table = Table()
-        for (i, person) in table.players.enumerated() {
+        let game = Game(table: table, board: board)
+        for (i, person) in game.players.enumerated() {
             print("Person \(i + 1): \(person.name)")
         }
         
@@ -46,23 +45,23 @@ class ViewController: UIViewController {
         let player9 = Player(chips: 100, name: "Jolle Doe", card1: nil, card2: nil, action: nil, position: nil)
         
         
-        // If I change the instance here of player1, then the table.bigBlind (assigned as player1) also changes properties
+        // If I change the instance here of player1, then the game.bigBlind (assigned as player1) also changes properties
         
         
         
         
-        table.smallBlind.player = player1
-        table.bigBlind.player = player2
-        table.utg.player = player3
-        table.utg1.player = player4
-        table.utg2.player = player5
-        table.mp1.player = player6
-        table.mp2.player = player7
-        table.cutoff.player = player8
-        table.button.player = player9
+        game.smallBlind.player = player1
+        game.bigBlind.player = player2
+        game.utg.player = player3
+        game.utg1.player = player4
+        game.utg2.player = player5
+        game.mp1.player = player6
+        game.mp2.player = player7
+        game.cutoff.player = player8
+        game.button.player = player9
         
         var playerTestArray = [Player]()
-        playerTestArray.append(contentsOf: [table.smallBlind.player!, table.bigBlind.player!, table.utg.player!, table.utg1.player!, table.utg2.player!, table.mp1.player!, table.mp2.player!, table.cutoff.player!, table.button.player!])
+        playerTestArray.append(contentsOf: [game.smallBlind.player!, game.bigBlind.player!, game.utg.player!, game.utg1.player!, game.utg2.player!, game.mp1.player!, game.mp2.player!, game.cutoff.player!, game.button.player!])
         
 //        player1.card1 = Card(suit: Suit.diamond, rank: Rank.eight)
 //        playerTestArray[0].card1 = Card(suit: Suit.diamond, rank: Rank.nine)
@@ -86,6 +85,12 @@ class ViewController: UIViewController {
         }
         
         
+        for (i, element) in game.board.boardCards.enumerated() {
+            print("Board card (\(i)): \(element.suit) \(element.rank)")
+        }
+        
+        board.drawTurnCard(deck: deck)
+        board.drawRiverCard(deck: deck)
         
         print("Number of cards left in the deck: \(deck.cards.count)")
     }

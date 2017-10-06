@@ -10,16 +10,16 @@ import Foundation
 
 class Table {
     
-    var players = [Player]()
-    var smallBlind = Position(position: .smallBlind)
-    var bigBlind = Position(position: .bigBlind)
-    var utg = Position(position: .utg)
-    var utg1 = Position(position: .utg1)
-    var utg2 = Position(position: .utg2)
-    var mp1 = Position(position: .mp1)
-    var mp2 = Position(position: .mp2)
-    var cutoff = Position(position: .cutoff)
-    var button = Position(position: .button)
+    var seat1: Player?
+    var seat2: Player?
+    var seat3: Player?
+    var seat4: Player?
+    var seat5: Player?
+    var seat6: Player?
+    var seat7: Player?
+    var seat8: Player?
+    var seat9: Player?
+    
     
     init() {
         

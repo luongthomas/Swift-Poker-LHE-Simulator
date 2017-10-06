@@ -18,6 +18,8 @@ class Player {
     var action: Action?
     var position: PositionType?
     
+    // table seat?
+    
     init(chips: Double, name: String, card1: Card? = nil, card2: Card? = nil, action: Action? = nil, position: PositionType? = nil) {
         self.chips = chips
         self.name = name

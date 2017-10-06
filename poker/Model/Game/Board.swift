@@ -27,6 +27,7 @@ class Board {
     
     
     func drawFlopCards(deck: Deck) {
+        self.drawBurnCard(deck: deck)
         let drawnCard = deck.drawCard()
         let secondDrawnCard = deck.drawCard()
         let thirdDrawnCard = deck.drawCard()
@@ -39,5 +40,32 @@ class Board {
         for (i, element) in boardCards.enumerated() {
             print("Board card (\(i)): \(element.suit) \(element.rank)")
         }
+        
+    }
+    
+    
+    func drawTurnCard(deck: Deck) {
+        if (turnCard.suit == .none) {
+            self.drawBurnCard(deck: deck)
+            let drawnCard = deck.drawCard()
+            turnCard = drawnCard
+            print("Turn card: \(turnCard.suit) \(turnCard.rank)")
+        }
+    }
+    
+    func drawRiverCard(deck: Deck) {
+        if (riverCard.suit == .none) {
+            self.drawBurnCard(deck: deck)
+            let drawnCard = deck.drawCard()
+            riverCard = drawnCard
+            print("River card: \(riverCard.suit) \(riverCard.rank)")
+        }
+    }
+    
+    
+    func drawBurnCard(deck: Deck) {
+        let burnCard = deck.drawCard()
+        print("Burn card: \(burnCard.suit) \(burnCard.rank)")
+//        print("Burned one card")
     }
 }
