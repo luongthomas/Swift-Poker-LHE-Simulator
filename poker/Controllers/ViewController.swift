@@ -10,7 +10,8 @@ import UIKit
 
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var positionLbl: UILabel!
+    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var chipsLbl: UILabel!
     
@@ -31,20 +32,7 @@ class ViewController: UIViewController {
         print("Folding")
     }
     
-    func updateValues(game: Game) {
-        guard let player = game.table.seats[0].player else { return }
-        guard let card1 = player.card1 else { return }
-        guard let card2 = player.card2 else { return }
-        guard let chips = player.chips else { return }
-        nameLbl.text = player.name
-        
-        suit1Lbl.text = String(describing: card1.suit)
-        suit2Lbl.text = String(describing: card2.suit)
-        rank1Lbl.text = String(describing: card1.rank)
-        rank2Lbl.text = String(describing: card2.rank)
-        chipsLbl.text = String(describing: chips)
-
-    }
+    
     
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var betBtn: UIButton!
@@ -101,7 +89,7 @@ class ViewController: UIViewController {
         }
         
         
-        updateValues(game: game)
+        game.updateValues(nameLabel: nameLbl, chipsLabel: chipsLbl, positionLabel: positionLbl, suit1Label: suit1Lbl, suit2Label: suit2Lbl, rank1Label: rank1Lbl, rank2Label: rank2Lbl)
         
     }
 

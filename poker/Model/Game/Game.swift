@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class Game {
@@ -51,8 +52,8 @@ class Game {
         let player8 = Player(chips: 100, name: "Jope Doe", card1: nil, card2: nil, action: nil, position: nil)
         let player9 = Player(chips: 100, name: "Jolle Doe", card1: nil, card2: nil, action: nil, position: nil)
         
-        
         var players = [Player]()
+        
         players.append(contentsOf: [player1, player2, player3, player4, player5, player6, player7, player8, player9])
         
         // If I change the instance here of player1, then the game.bigBlind (assigned as player1) also changes properties
@@ -69,6 +70,29 @@ class Game {
         
         for player in players {
             self.table.playerSitDown(player: player)
+        }
+    }
+    
+    func updateValues(nameLabel: UILabel, chipsLabel: UILabel, positionLabel: UILabel, suit1Label: UILabel, suit2Label: UILabel, rank1Label: UILabel, rank2Label: UILabel) {
+        for seat in self.table.seats {
+            guard let player = seat.player else { return }
+            if player.position == self.utg.position {
+//                guard let player = self.table.seats[0].player else { return }
+                
+                
+                guard let card1 = player.card1 else { return }
+                guard let card2 = player.card2 else { return }
+                guard let chips = player.chips else { return }
+                nameLabel.text = player.name
+                guard let position = player.position else { return }
+                
+                positionLabel.text = String(describing: position)
+                suit1Label.text = String(describing: card1.suit)
+                suit2Label.text = String(describing: card2.suit)
+                rank1Label.text = String(describing: card1.rank)
+                rank2Label.text = String(describing: card2.rank)
+                chipsLabel.text = String(describing: chips)
+            }
         }
     }
     
