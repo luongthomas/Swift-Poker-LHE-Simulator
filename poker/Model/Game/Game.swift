@@ -14,6 +14,10 @@ class Game {
     var table: Table
     var board: Board
     var deck: Deck
+    lazy var currentPlayerTurn: Player = {
+        let player = Player(chips: nil, name: nil, card1: nil, card2: nil, action: nil, position: nil)
+        return player
+    }()
     
     var positions = [Position]()
     
@@ -33,7 +37,39 @@ class Game {
         self.board = Board()
         self.deck = Deck()
         positions.append(contentsOf: [smallBlind, bigBlind, utg, utg1, utg2, mp1, mp2, cutoff, button])
+        self.populateTable()
+    }
+    
+    func populateTable() {
+        let player1 = Player(chips: 100, name: "John Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player2 = Player(chips: 100, name: "Jake Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player3 = Player(chips: 100, name: "Joe Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player4 = Player(chips: 100, name: "Joke Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player5 = Player(chips: 100, name: "Jane Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player6 = Player(chips: 100, name: "Joseph Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player7 = Player(chips: 100, name: "Johnny Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player8 = Player(chips: 100, name: "Jope Doe", card1: nil, card2: nil, action: nil, position: nil)
+        let player9 = Player(chips: 100, name: "Jolle Doe", card1: nil, card2: nil, action: nil, position: nil)
         
+        
+        var players = [Player]()
+        players.append(contentsOf: [player1, player2, player3, player4, player5, player6, player7, player8, player9])
+        
+        // If I change the instance here of player1, then the game.bigBlind (assigned as player1) also changes properties
+        self.smallBlind.player = player1
+        self.bigBlind.player = player2
+        self.utg.player = player3
+        self.utg1.player = player4
+        self.utg2.player = player5
+        self.mp1.player = player6
+        self.mp2.player = player7
+        self.cutoff.player = player8
+        self.button.player = player9
+        
+        
+        for player in players {
+            self.table.playerSitDown(player: player)
+        }
     }
     
     
@@ -66,6 +102,8 @@ class Game {
             let drawnCard = self.deck.drawCard()
             seat.player!.card2 = drawnCard
         }
+        
+        
     }
     
     func startFlop() {
