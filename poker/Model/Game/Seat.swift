@@ -16,6 +16,13 @@ struct Seat {
 
     let seat: tableSeat
     var player: Player?
+    var isItMyTurn: Bool
+    
+    init(seat: tableSeat, player: Player, isItMyTurn: Bool = false) {
+        self.seat = seat
+        self.player = player
+        self.isItMyTurn = isItMyTurn
+    }
     
     public static func ==(lhs: Seat, rhs: Seat) -> Bool{
         return

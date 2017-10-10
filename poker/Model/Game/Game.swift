@@ -27,6 +27,7 @@ class Game {
     var cutoff = Position(position: .cutoff)
     var button = Position(position: .button)
     
+    
     init() {
         self.table = Table()
         self.board = Board()
@@ -55,8 +56,22 @@ class Game {
         print("Rotated game positions")
     }
     
+    func beginPreflop() {
+        for seat in self.table.seats {
+            let drawnCard = self.deck.drawCard()
+            seat.player!.card1 = drawnCard
+        }
+        
+        for seat in self.table.seats {
+            let drawnCard = self.deck.drawCard()
+            seat.player!.card2 = drawnCard
+        }
+    }
+    
     func startFlop() {
         self.board.drawFlopCards(deck: self.deck)
+        
+        
     }
     
     func startTurn() {
@@ -66,6 +81,7 @@ class Game {
     func startRiver() {
         self.board.drawRiverCard(deck: self.deck)
     }
+    
     
     
 }
